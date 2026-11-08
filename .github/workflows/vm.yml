@@ -1,0 +1,20 @@
+
+name: Windows Cloud VM
+
+on:
+  workflow_dispatch:
+
+jobs:
+  vm:
+    runs-on: windows-latest
+    steps:
+      - name: Show system information
+        shell: pwsh
+        run: |
+          systeminfo
+          Get-PSDrive C
+
+      - name: Install Chrome
+        shell: pwsh
+        run: |
+          winget install Google.Chrome --silent --accept-package-agreements --accept-source-agreements
